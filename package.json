@@ -1,15 +1,25 @@
 {
-  "name": "nextjs",
-  "version": "0.1.0",
+  "name": "wallet-tester",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "next": "10.0.5",
-    "react": "17.0.1",
-    "react-dom": "17.0.1"
+    "next": "^15.0.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "@web3modal/wagmi": "^5.0.0",
+    "wagmi": "^2.12.0",
+    "viem": "^2.21.0",
+    "@tanstack/react-query": "^5.56.0",
+    "@coinbase/onchainkit": "^0.30.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "eslint-config-next": "^15.0.0"
   }
 }
