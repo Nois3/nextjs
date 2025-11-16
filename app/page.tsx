@@ -24,6 +24,7 @@ export default function Home() {
         <Link href="/nfts" className="nav-link">NFTs</Link>
         <Link href="/farcaster" className="nav-link">Farcaster</Link>
         <Link href="/base" className="nav-link">Base</Link>
+        <Link href="/security" className="nav-link">Seguridad</Link>
       </div>
 
       {isConnected && (
@@ -167,6 +168,27 @@ export default function Home() {
             <button className="button" style={{ background: '#0052FF' }}>Explorar Base →</button>
           </Link>
         </div>
+      </div>
+
+      <h2 style={{ marginTop: '3rem', marginBottom: '1.5rem' }}>🔐 Seguridad & Pentesting</h2>
+
+      <div className="card" style={{ background: 'linear-gradient(135deg, #dc3545 0%, #c82333 100%)', color: 'white' }}>
+        <h3 style={{ color: 'white', marginTop: 0 }}>🎯 Security & CTF Hub</h3>
+        <p style={{ color: 'white', marginBottom: '1rem', fontSize: '0.95rem', opacity: 0.95 }}>
+          <strong>Centro de Seguridad Web3:</strong> Aprende pentesting de smart contracts, practica con CTF challenges,
+          y domina técnicas de ethical hacking. Desde vulnerabilidades básicas hasta exploits avanzados.
+        </p>
+        <ul style={{ color: 'white', fontSize: '0.9rem', lineHeight: '1.8', marginBottom: '1.5rem', opacity: 0.95 }}>
+          <li>🚩 <strong>CTF Challenges</strong> - Ethernaut, Damn Vulnerable DeFi, Paradigm CTF</li>
+          <li>⚠️ <strong>Vulnerabilidades Comunes</strong> - Reentrancy, Flash Loans, Access Control</li>
+          <li>🛠️ <strong>Herramientas</strong> - Slither, Echidna, Mythril, Foundry</li>
+          <li>💰 <strong>Bug Bounties</strong> - Immunefi, Code4rena, Sherlock</li>
+        </ul>
+        <Link href="/security">
+          <button className="button" style={{ background: 'white', color: '#dc3545', fontWeight: 'bold' }}>
+            Explorar Security Hub →
+          </button>
+        </Link>
       </div>
 
       <div className="card" style={{ marginTop: '3rem', background: '#f8f9fa', border: '2px solid #e0e0e0' }}>
