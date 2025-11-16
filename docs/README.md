@@ -16,22 +16,28 @@ Bienvenido al recurso educativo completo de Web3 para desarrolladores senior. Es
 - **Account Abstraction**: ERC-4337, Smart Wallets, bundlers
 - **Gasless Transactions**: Meta-transactions, relayers, patrones
 - **Proxy Patterns**: Upgradeable contracts, UUPS, Transparent Proxy
-- **Seguridad**: Reentrancy, flash loans, common vulnerabilities
 
-### 3. Protocolos DeFi (`/docs/protocols`)
+### 3. Seguridad, Pentesting y Auditoría (`/docs/security`)
+- **Pentesting Web3**: Reconocimiento, análisis, vectores de ataque, metodología
+- **Auditoría de Smart Contracts**: Fases de auditoría, análisis manual, testing, reportes
+- **Catálogo de Vulnerabilidades**: Reentrancy, overflow, access control, oracle manipulation, flash loans, DoS, signature replay
+- **Herramientas de Seguridad**: Slither, Mythril, Foundry, Echidna, Certora, monitoring tools
+- **Ejercicios Prácticos**: Challenges de seguridad, PoCs, auditorías completas
+
+### 4. Protocolos DeFi (`/docs/protocols`)
 - **Uniswap V3**: Swaps, pools, liquidez concentrada
 - **Aave**: Lending, borrowing, flash loans
 - **ENS**: Resolución de nombres, reverse records, subdomains
 - **Base & L2s**: Optimistic rollups, bridging, diferencias con L1
 
-### 4. Patrones de Arquitectura (`/docs/patterns`)
+### 5. Patrones de Arquitectura (`/docs/patterns`)
 - **State Management**: Patrones de gestión de estado en dApps
 - **Error Handling**: Manejo robusto de errores en Web3
 - **Testing**: Unit tests, integration tests, fork testing
 - **Performance**: Optimización, caching, RPC management
 - **Security Best Practices**: Auditoría, validación, sandboxing
 
-### 5. Ejemplos Prácticos (`/docs/examples`)
+### 6. Ejemplos Prácticos (`/docs/examples`)
 - Implementaciones reales de cada concepto
 - Código comentado y explicado
 - Casos de uso del mundo real
@@ -59,7 +65,15 @@ Bienvenido al recurso educativo completo de Web3 para desarrolladores senior. Es
 1. Revisa `/docs/patterns/` para arquitectura moderna
 2. Explora `/docs/protocols/` para integraciones DeFi
 3. Estudia `/docs/advanced/` para técnicas avanzadas
-4. Contribuye con nuevos ejemplos y mejoras
+4. **NUEVO**: Profundiza en `/docs/security/` para pentesting y auditoría
+5. Contribuye con nuevos ejemplos y mejoras
+
+### Para Auditores y Security Researchers:
+1. Empieza con `/docs/security/vulnerabilities.md` - Catálogo completo
+2. Aprende herramientas en `/docs/security/tools.md`
+3. Aplica metodología de `/docs/security/pentest.md`
+4. Realiza auditorías siguiendo `/docs/security/audit.md`
+5. Practica con ejercicios de seguridad
 
 ## 📖 Cómo Usar Este Repositorio
 
