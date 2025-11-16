@@ -60,12 +60,13 @@ export default function SigningPage() {
       setPersonalSignature(signature);
 
       // Verificar inmediatamente (demo)
-      const recoveredAddress = await verifyMessage({
+      const isValid = await verifyMessage({
+        address: address!,
         message: personalMessage,
         signature
       });
 
-      setPersonalVerified(recoveredAddress.toLowerCase() === address.toLowerCase());
+      setPersonalVerified(isValid);
     } catch (err: any) {
       setError(err.message || 'Error al firmar mensaje');
       console.error('Sign error:', err);
@@ -131,7 +132,8 @@ export default function SigningPage() {
       setTypedDataSignature(signature);
 
       // Verificar
-      const recoveredAddress = await verifyTypedData({
+      const isValid = await verifyTypedData({
+        address: address!,
         domain,
         types,
         primaryType: 'Mail',
@@ -139,7 +141,7 @@ export default function SigningPage() {
         signature
       });
 
-      setTypedDataVerified(recoveredAddress.toLowerCase() === address.toLowerCase());
+      setTypedDataVerified(isValid);
     } catch (err: any) {
       setError(err.message || 'Error al firmar typed data');
       console.error('Typed data sign error:', err);

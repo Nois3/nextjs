@@ -123,6 +123,7 @@ export default function NFTsPage() {
     }
 
     async function fetchMetadata() {
+      if (!tokenURI) return;
       setLoadingMetadata(true);
       try {
         // Convertir IPFS URI a HTTP gateway
