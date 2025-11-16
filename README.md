@@ -1,230 +1,441 @@
-# 🔗 Wallet Tester - WalletConnect, Base & Farcaster
+# 📚 Web3 Learning Hub
 
-Una aplicación moderna de Next.js 15 para probar conexiones de wallets, visualizar saldos y realizar intercambios de tokens. Incluye integración con WalletConnect, Base (Coinbase L2) y contexto de Farcaster.
+> **Recurso educativo completo de Web3 para desarrolladores senior**
 
-## ✨ Características
+Una aplicación moderna de Next.js 15 diseñada para enseñar desarrollo Web3 desde conceptos fundamentales hasta integraciones avanzadas con protocolos DeFi. Incluye implementaciones reales, documentación exhaustiva, y ejemplos prácticos de producción.
 
-- **🔌 Conexión de Wallets**: Soporte para múltiples wallets a través de WalletConnect
-  - MetaMask
-  - Coinbase Wallet
-  - WalletConnect (cualquier wallet compatible)
-  - Rainbow, Trust Wallet y más
+![Next.js 15](https://img.shields.io/badge/Next.js-15-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)
+![Wagmi](https://img.shields.io/badge/Wagmi-2.12-purple)
+![Viem](https://img.shields.io/badge/Viem-2.21-green)
 
-- **💰 Visualización de Saldos**:
-  - Saldos nativos (ETH, etc.)
-  - Tokens ERC-20 en Base
-  - Múltiples redes soportadas
+---
 
-- **🔄 Swap de Tokens**:
-  - Interfaz de demostración para intercambio de tokens
-  - Preparado para integración con Uniswap/1inch
+## 🎯 Objetivos del Proyecto
 
-- **🟣 Integración Farcaster**:
-  - Contexto de autenticación Farcaster
-  - Firma de mensajes
-  - Identidad descentralizada
+Este repositorio está diseñado para:
 
-- **🔵 Base Network**:
-  - Integración completa con OnchainKit
-  - Soporte nativo para Base L2
-  - Registro de aplicaciones (demo)
+- ✅ **Enseñar Web3** desde la perspectiva de desarrolladores senior
+- ✅ **Mostrar patrones de producción**, no solo demos o tutoriales básicos
+- ✅ **Explicar el "porqué"**, no solo el "cómo"
+- ✅ **Documentar decisiones arquitectónicas** y trade-offs
+- ✅ **Incluir consideraciones de seguridad** en cada módulo
+- ✅ **Proporcionar código funcional** con explicaciones inline
 
-## 🚀 Instalación
+---
+
+## 📖 Módulos Educativos
+
+### 🔐 Firma de Mensajes (EIP-191 & EIP-712)
+**Ruta**: `/signing` | **Docs**: [`/docs/fundamentals/signing.md`](./docs/fundamentals/signing.md)
+
+Aprende sobre:
+- Personal Sign (EIP-191): Firma simple de mensajes
+- Typed Data Sign (EIP-712): Datos estructurados
+- Sign-In with Ethereum (SIWE - EIP-4361)
+- Verificación on-chain vs off-chain
+- Casos de uso: Autenticación, meta-transactions, off-chain orders
+
+**Implementación**: Componente funcional con ejemplos de firma y verificación en tiempo real.
+
+---
+
+### 🖼️ NFTs (ERC-721 & ERC-1155)
+**Ruta**: `/nfts` | **Docs**: [`/docs/fundamentals/nfts.md`](./docs/fundamentals/nfts.md)
+
+Aprende sobre:
+- ERC-721: Tokens únicos e indivisibles
+- ERC-1155: Multi-token standard (fungibles + no-fungibles)
+- Metadata & IPFS: Almacenamiento descentralizado
+- Minting, transferencias, approvals
+- Cómo funcionan los marketplaces (OpenSea, etc.)
+- Batch operations con ERC-1155
+
+**Implementación**: Explorador de NFTs con lectura de metadata en tiempo real desde IPFS.
+
+---
+
+### 🔄 Swaps & DEX (Uniswap V3)
+**Ruta**: `/swap` | **Docs**: [`/docs/protocols/uniswap.md`](./docs/protocols/uniswap.md)
+
+Aprende sobre:
+- AMM (Automated Market Maker): Fórmula x * y = k
+- Liquidez concentrada (innovación de V3)
+- Slippage protection y price impact
+- Cotizaciones con Quoter
+- Swaps exactInput vs exactOutput
+- Multi-hop swaps y routing
+- Fee tiers (0.01%, 0.05%, 0.3%, 1%)
+
+**Implementación**: Interfaz completa de swap con código real de Uniswap V3 (educativo, no ejecuta transacciones).
+
+---
+
+### 👛 Wallets & Conexión
+**Ruta**: `/connect` | **Docs**: [`/docs/fundamentals/wallets.md`](./docs/fundamentals/wallets.md)
+
+Aprende sobre:
+- Tipos de wallets (browser, mobile, hardware, smart contract)
+- WalletConnect protocol v2/v5
+- EIP-1193: Ethereum Provider API
+- EIP-6963: Multi Injected Provider Discovery
+- Custodia de claves: Self-custody vs custodial
+- Best practices de seguridad
+
+**Implementación**: Integración completa con Web3Modal v5 + Wagmi v2.
+
+---
+
+### 💰 Tokens & Balances (ERC-20)
+**Ruta**: `/balances`
+
+Aprende sobre:
+- ERC-20 token standard
+- Lectura de smart contracts con wagmi
+- Decimals, formateo, y conversiones
+- Approvals y allowances
+- Balance queries multi-chain
+
+**Implementación**: Dashboard de balances con soporte para múltiples tokens y redes.
+
+---
+
+### 🌐 Protocolos Web3
+
+#### 🟣 Farcaster
+**Ruta**: `/farcaster`
+
+Protocolo social descentralizado:
+- Autenticación descentralizada
+- Firma de mensajes para redes sociales Web3
+- Perfil de usuario on-chain
+
+#### 🔵 Base Network (Coinbase L2)
+**Ruta**: `/base`
+
+Layer 2 Optimistic Rollup:
+- OnchainKit integration
+- Diferencias con Ethereum mainnet
+- Bridging y transacciones L2
+
+---
+
+## 📁 Estructura del Proyecto
+
+```
+web3-learning-hub/
+├── app/                          # Next.js 15 App Router
+│   ├── page.tsx                 # Home (índice de módulos)
+│   ├── layout.tsx               # Layout raíz
+│   ├── providers.tsx            # Web3 providers (wagmi, OnchainKit)
+│   ├── globals.css              # Estilos globales
+│   │
+│   ├── signing/                 # 🔐 Módulo de firma de mensajes
+│   │   └── page.tsx
+│   ├── nfts/                    # 🖼️ Módulo de NFTs
+│   │   └── page.tsx
+│   ├── swap/                    # 🔄 Módulo de swaps
+│   │   └── page.tsx
+│   ├── connect/                 # 👛 Conexión de wallets
+│   │   └── page.tsx
+│   ├── balances/                # 💰 Visualización de balances
+│   │   └── page.tsx
+│   ├── farcaster/               # 🟣 Farcaster
+│   │   └── page.tsx
+│   └── base/                    # 🔵 Base Network
+│       └── page.tsx
+│
+├── docs/                         # 📚 Documentación educativa
+│   ├── README.md                # Índice de documentación
+│   ├── fundamentals/            # Conceptos fundamentales
+│   │   ├── wallets.md          # Wallets & Conexión
+│   │   ├── signing.md          # Firma de mensajes
+│   │   └── nfts.md             # NFTs completo
+│   ├── protocols/               # Protocolos DeFi
+│   │   └── uniswap.md          # Uniswap V3
+│   ├── advanced/                # Conceptos avanzados
+│   ├── patterns/                # Patrones de arquitectura
+│   └── examples/                # Ejemplos prácticos
+│
+├── config/
+│   └── wagmi.ts                 # Configuración de wagmi + Web3Modal
+├── contexts/
+│   ├── FarcasterContext.tsx     # Contexto de Farcaster
+│   └── BaseContext.tsx          # Contexto de Base
+│
+├── package.json                 # Dependencias
+├── tsconfig.json                # TypeScript config
+├── next.config.js               # Next.js config
+└── .env.example                 # Variables de entorno requeridas
+```
+
+---
+
+## 🚀 Instalación & Setup
 
 ### Prerequisitos
 
-- Node.js 18+
-- npm o yarn
-- Una wallet Web3 (MetaMask, Coinbase Wallet, etc.)
+- **Node.js** 18+ ([Descargar](https://nodejs.org/))
+- **npm** o **yarn**
+- **Wallet Web3**: MetaMask, Coinbase Wallet, Rainbow, etc.
 
 ### Pasos
 
 1. **Clonar el repositorio**
-\`\`\`bash
+```bash
 git clone <tu-repositorio>
 cd nextjs
-\`\`\`
+```
 
 2. **Instalar dependencias**
-\`\`\`bash
+```bash
 npm install
-\`\`\`
+```
 
 3. **Configurar variables de entorno**
-\`\`\`bash
+```bash
 cp .env.example .env.local
-\`\`\`
+```
 
-4. **Obtener WalletConnect Project ID**
-   - Visita https://cloud.walletconnect.com
-   - Crea un nuevo proyecto
-   - Copia el Project ID
-   - Pégalo en \`.env.local\`:
-     \`\`\`
-     NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID=tu_project_id_aqui
-     \`\`\`
+4. **Obtener WalletConnect Project ID** (REQUERIDO)
+   - Visita [WalletConnect Cloud](https://cloud.walletconnect.com)
+   - Crea un proyecto gratuito
+   - Copia tu Project ID
+   - Agrégalo a `.env.local`:
+   ```
+   NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID=tu_project_id_aqui
+   ```
 
 5. **(Opcional) Obtener OnchainKit API Key**
-   - Visita https://portal.cdp.coinbase.com/
-   - Crea una cuenta y genera un API Key
-   - Agrégalo a \`.env.local\`:
-     \`\`\`
-     NEXT_PUBLIC_ONCHAINKIT_API_KEY=tu_api_key_aqui
-     \`\`\`
+   - Visita [Coinbase Developer Portal](https://portal.cdp.coinbase.com/)
+   - Genera un API Key
+   - Agrégalo a `.env.local`:
+   ```
+   NEXT_PUBLIC_ONCHAINKIT_API_KEY=tu_api_key_aqui
+   ```
 
-6. **Ejecutar el servidor de desarrollo**
-\`\`\`bash
+6. **Ejecutar servidor de desarrollo**
+```bash
 npm run dev
-\`\`\`
+```
 
-7. **Abrir en el navegador**
-   - Navega a http://localhost:3000
-
-## 📁 Estructura del Proyecto
-
-\`\`\`
-nextjs/
-├── app/                      # App Router de Next.js 15
-│   ├── layout.tsx           # Layout principal
-│   ├── page.tsx             # Página de inicio
-│   ├── providers.tsx        # Providers de Web3 y contextos
-│   ├── globals.css          # Estilos globales
-│   ├── connect/             # Página de conexión de wallet
-│   ├── balances/            # Página de visualización de saldos
-│   ├── swap/                # Página de swap de tokens
-│   ├── farcaster/           # Integración con Farcaster
-│   └── base/                # Información de Base network
-├── config/
-│   └── wagmi.ts             # Configuración de wagmi y Web3Modal
-├── contexts/
-│   ├── FarcasterContext.tsx # Contexto de Farcaster
-│   └── BaseContext.tsx      # Contexto de Base
-├── package.json
-├── tsconfig.json
-├── next.config.js
-└── README.md
-\`\`\`
-
-## 🛠️ Tecnologías Utilizadas
-
-- **Next.js 15**: Framework de React con App Router
-- **React 18**: Biblioteca de UI
-- **TypeScript**: Tipado estático
-- **wagmi**: Hooks de React para Ethereum
-- **viem**: Cliente de Ethereum ligero
-- **Web3Modal v5**: UI para conexión de wallets
-- **@coinbase/onchainkit**: Herramientas para Base
-- **@tanstack/react-query**: Manejo de estado asíncrono
-
-## 🌐 Redes Soportadas
-
-- **Ethereum Mainnet** (Chain ID: 1)
-- **Base** (Chain ID: 8453)
-- **Polygon** (Chain ID: 137)
-- **Arbitrum** (Chain ID: 42161)
-- **Optimism** (Chain ID: 10)
-
-## 📖 Uso
-
-### Conectar una Wallet
-
-1. Ve a la página "Conectar Wallet"
-2. Haz clic en "Conectar Wallet"
-3. Selecciona tu wallet preferida del modal
-4. Aprueba la conexión en tu wallet
-
-### Ver Saldos
-
-1. Conecta tu wallet primero
-2. Ve a la página "Ver Saldos"
-3. Visualiza tu saldo nativo y tokens ERC-20 (en Base)
-
-### Realizar un Swap (Demo)
-
-1. Conecta tu wallet
-2. Ve a la página "Swap Tokens"
-3. Selecciona los tokens de origen y destino
-4. Ingresa la cantidad
-5. Haz clic en "Swap"
-
-**Nota**: La funcionalidad de swap es una demostración. Para producción, integra con Uniswap, 1inch u otro DEX.
-
-### Farcaster Integration
-
-1. Ve a la página "Farcaster"
-2. Haz clic en "Conectar con Farcaster"
-3. Prueba la firma de mensajes
-
-**Nota**: Esta es una demostración. Para producción, usa Farcaster Auth Kit.
-
-### Base Network
-
-1. Conecta tu wallet
-2. Ve a la página "Base"
-3. Cambia a la red Base si no estás conectado
-4. Explora la información de Base y registra una app (demo)
-
-## 🔐 Seguridad
-
-- Nunca compartas tus claves privadas
-- Revisa siempre las transacciones antes de firmar
-- Usa redes de prueba para desarrollo
-- Las variables de entorno deben mantenerse seguras
-
-## 🚧 Próximas Mejoras
-
-- [ ] Integración real con Uniswap para swaps
-- [ ] Soporte para más tokens ERC-20
-- [ ] Integración completa con Farcaster Auth Kit
-- [ ] Histórico de transacciones
-- [ ] Soporte para NFTs
-- [ ] Tests unitarios y e2e
-- [ ] Optimización de rendimiento
-
-## 🐛 Solución de Problemas
-
-### Error: "No matching version found for @farcaster/auth-kit"
-- La integración de Farcaster usa un contexto personalizado por ahora
-- Para producción, instala manualmente la versión correcta del paquete
-
-### Error: "WalletConnect Project ID is not set"
-- Asegúrate de haber creado el archivo \`.env.local\`
-- Copia el \`.env.example\` y agrega tu Project ID
-
-### La app no se conecta a mi wallet
-- Verifica que tu wallet esté instalada y desbloqueada
-- Prueba refrescar la página
-- Limpia el caché del navegador
-
-## 📄 Licencia
-
-MIT
-
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas! Por favor:
-
-1. Haz fork del proyecto
-2. Crea una rama para tu feature (\`git checkout -b feature/AmazingFeature\`)
-3. Commit tus cambios (\`git commit -m 'Add some AmazingFeature'\`)
-4. Push a la rama (\`git push origin feature/AmazingFeature\`)
-5. Abre un Pull Request
-
-## 📞 Soporte
-
-Si tienes problemas o preguntas:
-- Abre un issue en GitHub
-- Revisa la documentación de las tecnologías utilizadas
-
-## 🔗 Links Útiles
-
-- [Next.js Documentation](https://nextjs.org/docs)
-- [wagmi Documentation](https://wagmi.sh)
-- [WalletConnect Cloud](https://cloud.walletconnect.com)
-- [Base Documentation](https://docs.base.org)
-- [OnchainKit](https://onchainkit.xyz)
-- [Farcaster](https://www.farcaster.xyz)
+7. **Abrir en navegador**
+   - Navega a [http://localhost:3000](http://localhost:3000)
 
 ---
 
-Hecho con ❤️ usando Next.js 15, WalletConnect y Base
+## 🛠️ Stack Tecnológico
+
+### Frontend
+- **Next.js 15**: App Router, React Server Components
+- **React 18**: Hooks, Context API
+- **TypeScript**: Type safety completo
+- **CSS**: Custom (Tailwind-like utilities)
+
+### Web3
+- **Wagmi v2**: React hooks para Ethereum
+- **Viem v2**: Cliente TypeScript (reemplazo moderno de ethers)
+- **@tanstack/react-query v5**: State management
+- **WalletConnect v5**: Conexión universal de wallets
+- **Web3Modal v5**: UI de conexión
+- **OnchainKit**: Herramientas de Coinbase para Base
+
+### Redes Soportadas
+- Ethereum Mainnet
+- Base (Coinbase L2)
+- Polygon
+- Arbitrum
+- Optimism
+
+---
+
+## 📚 Guía de Uso
+
+### Ruta de Aprendizaje Sugerida
+
+#### Para Desarrolladores Web2 → Web3:
+
+1. **Conectar Wallet** (`/connect`)
+   - Entiende qué es una wallet y cómo funciona
+   - Lee `/docs/fundamentals/wallets.md`
+
+2. **Ver Balances** (`/balances`)
+   - Aprende sobre ERC-20 y lectura de contratos
+   - Experimenta con múltiples redes
+
+3. **Firma de Mensajes** (`/signing`)
+   - Fundamental para autenticación Web3
+   - Lee `/docs/fundamentals/signing.md`
+
+4. **NFTs** (`/nfts`)
+   - Explora tokens no fungibles
+   - Lee `/docs/fundamentals/nfts.md`
+
+5. **Swaps** (`/swap`)
+   - Entiende cómo funcionan los DEX
+   - Lee `/docs/protocols/uniswap.md`
+
+#### Para Desarrolladores con Experiencia Web3:
+
+1. Revisa `/docs/patterns/` para patrones modernos
+2. Explora `/docs/protocols/` para integraciones DeFi
+3. Estudia `/docs/advanced/` para técnicas avanzadas
+4. Contribuye con nuevos módulos y ejemplos
+
+---
+
+## 🔒 Seguridad
+
+Este proyecto es **educativo** y está diseñado para aprendizaje. Antes de usar en producción:
+
+- ✅ **Audita todo el código**
+- ✅ **Prueba en testnets primero** (Sepolia, Goerli, Base Sepolia)
+- ✅ **Nunca expongas claves privadas** en código o variables de entorno del cliente
+- ✅ **Valida inputs del usuario** siempre
+- ✅ **Usa límites de aprobación** (no approvals infinitas sin consentimiento)
+- ✅ **Implementa rate limiting** en producción
+- ✅ **Monitorea transacciones** para actividad sospechosa
+
+### Notas de Seguridad por Módulo
+
+- **Swaps**: Los swaps reales están deshabilitados. El código muestra la implementación pero no ejecuta transacciones.
+- **Firma**: Nunca firmes mensajes sin revisar el contenido. Usa EIP-712 cuando sea posible.
+- **NFTs**: Verifica siempre los contratos antes de hacer mint o compras.
+- **Approvals**: Revoca approvals innecesarias en [Revoke.cash](https://revoke.cash/)
+
+---
+
+## 🎓 Filosofía Educativa
+
+Este repositorio asume que eres un **desarrollador senior** y por lo tanto:
+
+### Profundidad sobre Amplitud
+- Preferimos explicar un concepto a fondo que cubrir 20 superficialmente
+- Cada módulo incluye teoría, implementación, y casos de uso reales
+
+### Explicar el "Porqué"
+- No solo "cómo hacer X", sino "por qué X existe"
+- Contexto histórico (e.g., por qué EIP-712 mejora sobre EIP-191)
+- Trade-offs y decisiones arquitectónicas
+
+### Patrones de Producción
+- Código que podrías usar en producción (con ajustes)
+- Manejo de errores robusto
+- Type safety completo
+- Performance optimization
+
+### Consideraciones de Seguridad
+- Cada feature incluye sección de seguridad
+- Vectores de ataque comunes
+- Mitigaciones y best practices
+
+### Contexto y Referencias
+- Links a EIPs originales
+- Documentación oficial de protocolos
+- Artículos técnicos y whitepapers
+
+---
+
+## 🧪 Testing
+
+```bash
+# Ejecutar tests (cuando estén implementados)
+npm test
+
+# Type checking
+npm run type-check
+
+# Linting
+npm run lint
+
+# Build de producción
+npm run build
+```
+
+---
+
+## 🤝 Contribuir
+
+Las contribuciones son bienvenidas! Este es un recurso educativo vivo.
+
+### Cómo Contribuir
+
+1. **Fork** el repositorio
+2. **Crea una branch**: `git checkout -b feature/nuevo-modulo`
+3. **Commit** tus cambios: `git commit -m 'Add: nuevo módulo de Account Abstraction'`
+4. **Push**: `git push origin feature/nuevo-modulo`
+5. **Abre un Pull Request**
+
+### Ideas para Contribuciones
+
+- ✅ Nuevos módulos educativos (ENS, Aave, Compound, etc.)
+- ✅ Más documentación en `/docs`
+- ✅ Traducciones a otros idiomas
+- ✅ Mejoras a la UI/UX
+- ✅ Tests unitarios y de integración
+- ✅ Correcciones de errores o typos
+
+---
+
+## 📝 Roadmap
+
+### ✅ Completado
+- [x] Estructura base del proyecto
+- [x] Integración WalletConnect + Web3Modal
+- [x] Módulo de Firma de Mensajes
+- [x] Módulo de NFTs
+- [x] Módulo de Swaps (Uniswap V3)
+- [x] Documentación fundamental
+
+### 🚧 En Progreso
+- [ ] Módulo de ENS (Ethereum Name Service)
+- [ ] Ejemplos de Multicall & Batch Transactions
+- [ ] Patrones de arquitectura avanzados
+
+### 📋 Planeado
+- [ ] Account Abstraction (ERC-4337)
+- [ ] Integración con Aave (Lending/Borrowing)
+- [ ] Gasless Transactions (Meta-transactions)
+- [ ] DAO Governance (Voting, Proposals)
+- [ ] Testing (Unit & Integration tests)
+- [ ] CI/CD Pipeline
+- [ ] Despliegue a Vercel/Netlify
+
+---
+
+## 📄 Licencia
+
+MIT License - Úsalo libremente para aprender, enseñar, y construir.
+
+---
+
+## 🙏 Agradecimientos
+
+Este proyecto fue construido con:
+
+- [Next.js](https://nextjs.org/)
+- [Wagmi](https://wagmi.sh/)
+- [Viem](https://viem.sh/)
+- [WalletConnect](https://walletconnect.com/)
+- [OnchainKit](https://onchainkit.xyz/)
+- [Uniswap](https://uniswap.org/)
+
+Y la increíble comunidad de desarrollo Web3.
+
+---
+
+## 📞 Contacto & Soporte
+
+- **Issues**: [GitHub Issues](tu-repo/issues)
+- **Discussions**: [GitHub Discussions](tu-repo/discussions)
+- **Twitter**: [@tu-handle](https://twitter.com/tu-handle)
+
+---
+
+## ⚠️ Disclaimer
+
+Este proyecto es **solo para fines educativos**. El código no ha sido auditado profesionalmente. Úsalo bajo tu propio riesgo. Los autores no se hacen responsables por pérdida de fondos o problemas de seguridad derivados del uso de este código.
+
+---
+
+**Construido con ❤️ para la comunidad Web3**
